@@ -106,22 +106,22 @@ then
 	echo
 
 	echo "Creating the sleep script ..."
-		touch ~/.sleep_d
-		chmod u+x ~/.sleep_d
+		touch ~/.sleep
+		chmod u+x ~/.sleep
 echo "#! /bin/bash
 
-status=$(networksetup getairportpower en0 | grep -Ei "On$")
+status=\$(networksetup getairportpower en0 | grep -Ei \"On$\")
 
 if [ -f /tmp/wifi.on ]; then
     rm /tmp/wifi.on
 fi
 
-if [ "" !=  "$status" ]; then
-    echo "WiFi is On ... storing statement" >> /tmp/sleep.log
+if [ \"\" !=  \"\$status\" ]; then
+    echo \"WiFi is On ... storing statement\" >> /tmp/sleep.log
 
     touch /tmp/wifi.on
     networksetup setairportpower en0 off
-fi" > ~/.sleep_d
+fi" > ~/.sleep
 	echo "Done."
 	echo "(Press ENTER key to continue.)"
 	read
@@ -133,7 +133,7 @@ fi" > ~/.sleep_d
 echo "#! /bin/bash
 
 if [ -f /tmp/wifi.on ]; then
-    echo "Enablig WiFi" >> /tmp/sleep.log
+    echo \"Enablig WiFi\" >> /tmp/sleep.log
 
     /usr/sbin/networksetup setairportpower en0 on
 fi" > ~/.wakeup
